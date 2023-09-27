@@ -7,6 +7,9 @@ public class TargetComponent : MonoBehaviour
     public void ProcessHit()
     {
         // TODO React to hit 
+        GameManager.Instance.IncrementScore();
+        gameObject.SetActive(false);
+        Invoke("ResetTarget",5.0f);
     }
     void ResetTarget()
     {

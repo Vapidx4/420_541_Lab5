@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
         // Moving the character foward according to the speed
         float speed = GetMovementSpeed();
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         // Making sure we dont have a Y velocity if we are grounded
         // controller.isGrounded tells you if a character is grounded ( IE Touches the ground)
         groundedPlayer = controller.isGrounded;

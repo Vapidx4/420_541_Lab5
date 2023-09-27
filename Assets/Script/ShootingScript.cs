@@ -20,7 +20,23 @@ public class ShootingScript : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             //TODO Shooting logic
-            
+            Instantiate(particleSystemToSpawn, spawnPoint.position, spawnPoint.rotation);
+            source.Play();
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                //What you call here when your ray hits something
+                if (hit.collider.CompareTag("Target"))
+                {
+                    TargetComponent tc = hit.collider.gameObject.GetComponent<TargetComponent>();
+                    if (tc != null)
+                    {
+                        tc.ProcessHit();
+                    }
+
+                }
+            }
         }
         
     }

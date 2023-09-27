@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public void IncrementScore()
     {
         // TODO Increment score logic and win condition 
-
+        ++Score;
+        if (Score >= 4)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
